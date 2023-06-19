@@ -1,2 +1,3 @@
-# java
-moje prve kroky v jave
+# java 1
+
+Toto su moje prve kroky v **Jave**. Super.
