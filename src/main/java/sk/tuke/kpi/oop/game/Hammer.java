@@ -10,7 +10,7 @@ public class Hammer extends AbstractActor {
     private int usages; //vytvorenie clenskej premennej
 
 
-    //vytvorenie metody
+    //vytvorenie metody - vratila aktualnu hodnotu
     public int getUsages() {
         return this.usages;
     }
@@ -21,6 +21,14 @@ public class Hammer extends AbstractActor {
         this.usages = 1;
         Animation animation = new Animation("sprites/hammer.png");
         setAnimation(animation);
+    }
+
+    //vytvorenie metody - zmenila hodnotu premennej o -1 pri kazdom pouziti a nakoniec kladivo zmizne
+    public void use() {
+        this.usages--;
+        if (this.usages == 0){
+            getScene().removeActor(this);
+        }
     }
 
 }

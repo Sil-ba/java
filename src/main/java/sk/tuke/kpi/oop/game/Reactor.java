@@ -51,7 +51,7 @@ public class Reactor extends AbstractActor {
 
     public void increaseTemperature(int increment) {
 
-        if(increment < 0) {
+        if (increment < 0) {
             return;
         }
 
@@ -68,7 +68,7 @@ public class Reactor extends AbstractActor {
 
     public void decreaseTemperature(int decrement) {
 
-        if(decrement < 0) {
+        if (decrement < 0) {
             return;
         }
 
@@ -97,5 +97,19 @@ public class Reactor extends AbstractActor {
 
     }
 
-}
+    public void repairWith(Hammer hammer) {
 
+        if (hammer == null) {
+            return;
+        }
+        if (this.damage == 0 || this.damage == 100) {
+            return;
+        }
+        hammer.usn();
+        this.damage = this.damage - 50;
+        this.temperature = 0;
+        if (this.damage < 0) {
+            this.damage = 0;
+        }
+    }
+}
