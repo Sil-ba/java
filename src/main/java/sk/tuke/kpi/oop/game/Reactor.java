@@ -105,11 +105,13 @@ public class Reactor extends AbstractActor {
         if (this.damage == 0 || this.damage == 100) {
             return;
         }
-        hammer.usn();
+        hammer.use();
         this.damage = this.damage - 50;
-        this.temperature = 0;
+
         if (this.damage < 0) {
             this.damage = 0;
         }
-    }
+        this.temperature = 0;
+        updateAnimation();
+}
 }
