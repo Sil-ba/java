@@ -67,7 +67,7 @@ public class Reactor extends AbstractActor {
             return;
         }
 
-        updateAnimation()
+        updateAnimation();
     }
 
     public void updateAnimation() {
