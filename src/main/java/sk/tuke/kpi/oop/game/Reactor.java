@@ -50,6 +50,12 @@ public class Reactor extends AbstractActor {
     }
 
     public void increaseTemperature(int increment) {
+
+        if(increment < 0) {
+            return;
+        }
+
+
         this.temperature = this.temperature + increment;
 
         if (this.damage == 100) {
@@ -61,6 +67,11 @@ public class Reactor extends AbstractActor {
 
 
     public void decreaseTemperature(int decrement) {
+
+        if(decrement < 0) {
+            return;
+        }
+
         this.temperature = this.temperature - decrement;
 
         if (this.damage == 100) {
