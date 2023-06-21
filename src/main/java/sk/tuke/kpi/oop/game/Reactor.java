@@ -111,7 +111,6 @@ public class Reactor extends AbstractActor {
         if (this.damage < 0) {
             this.damage = 0;
         }
-        this.temperature = 0;
-        updateAnimation();
+        this.temperature = 0;        updateAnimation();
 }
 }
