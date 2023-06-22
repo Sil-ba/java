@@ -22,7 +22,7 @@ public class Reactor extends AbstractActor {
         this.offAnimation = new Animation(
             "sprites/reactor.png",
             80, 80
-            );
+        );
 
         this.normalAnimation = new Animation(
             "sprites/reactor_on.png",
@@ -58,7 +58,7 @@ public class Reactor extends AbstractActor {
 
     public void increaseTemperature(int increment) {
 
-        if (increment < 0) {
+        if (increment < 0 || isRunning() == false) {
             return;
         }
 
@@ -70,12 +70,23 @@ public class Reactor extends AbstractActor {
         }
 
         updateAnimation();
+        // update damage
+        if (this.temperature >= 2000) {
+            if (this.temperature >= 6000) {
+                this.damage = 100;
+            } else {
+                int damage = (this.temperature / 40) - 50;
+                if (this.damage < damage) {
+                    this.damage = damage;
+                }
+            }
+        }
     }
 
 
     public void decreaseTemperature(int decrement) {
 
-        if (decrement < 0) {
+        if (decrement < 0 || !isRunning()) {
             return;
         }
 
@@ -88,7 +99,7 @@ public class Reactor extends AbstractActor {
         updateAnimation();
     }
 
-    public void updateAnimation() {
+    private void updateAnimation() {
 
         // if temperature is >= 6000, then broken show reactor
         if (this.temperature >= 6000) {
@@ -101,6 +112,7 @@ public class Reactor extends AbstractActor {
         } else {
             setAnimation(this.normalAnimation);
         }
+
 
     }
 
@@ -120,7 +132,32 @@ public class Reactor extends AbstractActor {
         }
         this.temperature = 0;
         updateAnimation();
+    }
+
+    public void turnOn() {
+        if (this.damage == 100) {
+            return;
+        }
+        this.state = true;
+        getAnimation().play();
+        updateAnimation();
+    }
+
+    public void turnOff() {
+        if (this.damage == 100) {
+            return;
+        }
+        this.state = false;
+        getAnimation().pause();
+        updateAnimation();
+
+    }
+
+    public boolean isRunning() {
+        return this.state;
+    }
+
 }
 
 
-}
+
