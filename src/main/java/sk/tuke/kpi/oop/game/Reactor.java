@@ -21,7 +21,7 @@ public class Reactor extends AbstractActor {
 
         this.offAnimation = new Animation(
             "sprites/reactor.png",
-            80, 80,
+            80, 80
             );
 
         this.normalAnimation = new Animation(
