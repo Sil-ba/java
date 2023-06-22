@@ -16,7 +16,11 @@ public class Computer extends AbstractActor {
     //metoda
     public int add(int operand1, int operand2) {
         return operand1 + operand2;
+    }
 
+    //metoda
+    public float add(float operand1, float operand2) {
+        return operand1 + operand2;
     }
 
     //metoda
@@ -24,5 +28,9 @@ public class Computer extends AbstractActor {
         return operand1 - operand2;
     }
 
+    //metoda
+    public float sub(float operand1, float operand2) {
+        return operand1 - operand2;
+    }
 
 }
